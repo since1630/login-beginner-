@@ -8,6 +8,6 @@ const ctrl = require("./home.ctrl"); // 컨트롤러 모듈 불러오기
 
 router.get("/", ctrl.output.hello);
 router.get("/login", ctrl.output.login);
-// router.post("/login", ctrl.process.login);
+router.post("/login", ctrl.process.login);
 
 module.exports = router; // router 내보내기
