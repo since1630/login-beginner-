@@ -1,4 +1,5 @@
 "use strict";
+// 기존에 갖고있는 유저 데이터를 관리하는 UserStorage 페이지.
 
 class UserStorage {
   static #users = {
@@ -17,6 +18,16 @@ class UserStorage {
     }, {});
 
     return newUsers;
+  }
+  static getUserInfo(id) {
+    const users = this.#users; // {id: ["shin", "pream"] , password: ["123", "111"]}
+    const idx = users.id.indexOf(id);
+    const usersKeys = Object.keys(users);
+    const userInfo = usersKeys.reduce((newUser, info) => {
+      newUser[info] = users[info][idx];
+      return newUser;
+    }, {});
+    return userInfo;
   }
 }
 
