@@ -27,5 +27,7 @@ function login() {
       "Content-Type": "application/json", // 보내는 데이터가 json 파일임을 알려줘야함.
     },
     body: JSON.stringify(req), // 요청을 JSON화(문자열)한다.
-  });
+  })
+    .then((res) => res.json())
+    .then(console.log);
 }
