@@ -19,4 +19,13 @@ function login() {
   };
   console.log(req);
   console.log("로그인 버튼을 클릭 했습니다.");
+
+  // fetch를 이용해 사용자가 입력한 정보를 서버로 전달한다.
+  fetch("/login", {
+    method: "POST", // 요청 메서드
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(req), // 요청을 JSON화(문자열)한다.
+  });
 }
