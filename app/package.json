@@ -12,7 +12,7 @@
     "array-flatten": "^1.1.1",
     "async": "^3.2.4",
     "balanced-match": "^1.0.2",
-    "body-parser": "^1.20.1",
+    "body-parser": "^1.20.2",
     "brace-expansion": "^1.1.11",
     "bytes": "^3.1.2",
     "call-bind": "^1.0.2",
@@ -37,8 +37,8 @@
     "finalhandler": "^1.2.0",
     "forwarded": "^0.2.0",
     "fresh": "^0.5.2",
-    "get-intrinsic": "^1.2.1",
     "function-bind": "^1.1.1",
+    "get-intrinsic": "^1.2.1",
     "has": "^1.0.3",
     "has-flag": "^4.0.0",
     "has-proto": "^1.0.1",
@@ -49,8 +49,8 @@
     "ipaddr.js": "^1.9.1",
     "jake": "^10.8.6",
     "media-typer": "^0.3.0",
-    "methods": "^1.1.2",
     "merge-descriptors": "^1.0.1",
+    "methods": "^1.1.2",
     "mime": "^1.6.0",
     "mime-db": "^1.52.0",
     "mime-types": "^2.1.35",
@@ -71,22 +71,26 @@
     "serve-static": "^1.15.0",
     "setprototypeof": "^1.2.0",
     "side-channel": "^1.0.4",
-    "supports-color": "^7.2.0",
     "statuses": "^2.0.1",
+    "supports-color": "^7.2.0",
     "toidentifier": "^1.0.1",
     "type-is": "^1.6.18",
     "unpipe": "^1.0.0",
     "utils-merge": "^1.0.1",
     "vary": "^1.1.2"
   },
-  "devDependencies": {},
   "scripts": {
-    "start" : "nodemon ./bin/www.js",
+    "start": "nodemon ./bin/www.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["login start"],
+  "keywords": [
+    "login start"
+  ],
   "author": "shinsungyun",
   "license": "ISC",
   "homepage": "",
-  "repository": {"type": "git","url": "github.com/since1630"}
+  "repository": {
+    "type": "git",
+    "url": "github.com/since1630"
+  }
 }
