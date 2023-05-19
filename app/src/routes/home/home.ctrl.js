@@ -21,18 +21,13 @@ const process = {
     if (user.id.includes(id)) {
       const idx = user.id.indexOf(id);
       if (user.password[idx] === password) {
-        // return res.json({
-        //   success: true,
-        // });
+        // json()을 이용해 응답결과를 프로미스로 반환
         return res.json({
           success: true,
         });
       }
     }
-    // return res.json({
-    //   success: false,
-    //   msg: "로그인에 실패 했습니다.",
-    // });
+    // json()을 이용해 응답결과를 프로미스로 반환
     return res.json({
       success: false,
       msg: "로그인에 실패했습니다.",

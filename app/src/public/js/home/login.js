@@ -28,6 +28,11 @@ function login() {
     },
     body: JSON.stringify(req), // 요청을 JSON화(문자열)한다.
   })
-    .then((res) => res.json())
-    .then(console.log);
+    .then((res) => res.json()) // routes/home.ctrl.js로 부터 받은 응답은 Response 스트림 이다. 스트림은 파일을 완전히 읽은 상태가 아니므로 json()을 이용해 완전히 읽는 작업이 필요하다.
+    .then((res) => {
+      res.success ? (location.href = "/") : alert(res.msg);
+    })
+    .catch((err) => {
+      console.error(new Error("로그인 중 에러 발생"));
+    });
 }
