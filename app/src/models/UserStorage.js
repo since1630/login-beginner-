@@ -15,15 +15,10 @@ class UserStorage {
     return userInfo;
   }
 
-  // 어떤 유저 필드가 데이터를 받아올 수 있도록 메서드 만들기
-  static getUsers(...field) {
-    // const users = this.#users;
-    fs.readFile("./package.json", (err, data) => {
-      if (err) throw err;
-      console.log(data);
-    });
-
-    const newUsers = field.reduce((newUsers, field) => {
+  static #getUsers(data, isALL, fields) {
+    const users = JSON.parse(data);
+    if (isALL) return users;
+    const newUsers = fields.reduce((newUsers, field) => {
       if (users.hasOwnProperty(field)) {
         newUsers[field] = users[field];
       }
@@ -31,6 +26,17 @@ class UserStorage {
     }, {});
 
     return newUsers;
+  }
+
+  // 어떤 유저 필드가 데이터를 받아올 수 있도록 메서드 만들기
+  static getUsers(isALL, ...fields) {
+    // const users = this.#users;
+    return fs
+      .readFile("./src/databases/home/users.json")
+      .then((data) => {
+        return this.#getUsers(data, isALL, fields);
+      })
+      .catch(console.error);
   }
 
   // 유저 정보 가져오기
@@ -43,12 +49,16 @@ class UserStorage {
       })
       .catch(console.error);
   }
-
-  static save(userInfo) {
-    // const users = this.#users;
+  // 회원 가입 정보 저장하기
+  static async save(userInfo) {
+    const users = await this.getUsers(true);
+    if (users.id.includes(userInfo.id)) {
+      throw "이미 존재하는 아이디 입니다.";
+    }
     users.id.push(userInfo.id);
-    users.name.push(userInfo.name);
     users.password.push(userInfo.password);
+    users.name.push(userInfo.name);
+    fs.writeFile("./src/databases/home/users.json", JSON.stringify(users));
     return { success: true };
   }
 }
