@@ -7,16 +7,17 @@ class User {
   constructor(body) {
     this.body = body;
   }
-  login() {
+
+  async login() {
     const client = this.body;
-    console.log(UserStorage.getUserInfo(client.id));
-    // if (id) {
-    //   if (id === client.id && password === client.password) {
-    //     return { success: true };
-    //   }
-    //   return { success: false, msg: "비밀번호가 다릅니다" };
-    // }
-    // return { success: false, msg: "존재하지 않는 아이디 입니다." };
+    const { id, password } = await UserStorage.getUserInfo(client.id); // getUserInfo의 fs.Readfile의 값은 프로미스다. 프로미스 처리가 끝나기 전까지 외부로부터의 출력 혹은 반환을 할 수 없게 await 처리 or then처리 한다.
+    if (id) {
+      if (id === client.id && password === client.password) {
+        return { success: true };
+      }
+      return { success: false, msg: "비밀번호가 다릅니다" };
+    }
+    return { success: false, msg: "존재하지 않는 아이디 입니다." };
   }
 
   register() {
