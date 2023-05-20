@@ -9,13 +9,16 @@ const signbutton = document.querySelector("#button");
 signbutton.addEventListener("click", register);
 
 function register() {
+  if (!id.value) return alert("아이디를 입력하세요.");
+  if (password.value !== confirmPassword.value)
+    return alert("비밀번호가 일치하지 않습니다.");
+
   const req = {
     id: id.value,
     name: name.value,
     password: password.value,
-    confirmPassword: confirmPassword.value,
+    // confirmPassword: confirmPassword.value,
   };
-  console.log(req);
 
   fetch("/register", {
     method: "POST", // 요청 메서드
@@ -27,7 +30,7 @@ function register() {
     .then((res) => res.json())
     .then((res) => {
       if (res.success) {
-        location.href = "/";
+        location.href = "/login";
       } else {
         alert(res.msg);
       }
