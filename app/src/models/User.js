@@ -8,8 +8,6 @@ class User {
     this.body = body;
   }
   login() {
-    // const { id, password } = UserStorage.getUsers("id", "password");
-    // const { id, password } = UserStorage.getUserInfo("id", "password");
     const body = this.body;
     const { id, password } = UserStorage.getUserInfo(body.id);
     if (id) {

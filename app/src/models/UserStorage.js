@@ -7,18 +7,18 @@ class UserStorage {
     id: ["shin", "pream"],
     password: ["123", "111"],
   };
-  // 데이터를 받아올 수 있도록 메서드 만들기
-  static getUsers(...field) {
-    const users = this.#users;
-    const newUsers = field.reduce((newUsers, field) => {
-      if (users.hasOwnProperty(field)) {
-        newUsers[field] = users[field];
-      }
-      return newUsers;
-    }, {});
+  //   // 데이터를 받아올 수 있도록 메서드 만들기
+  //   static getUsers(...field) {
+  //     const users = this.#users;
+  //     const newUsers = field.reduce((newUsers, field) => {
+  //       if (users.hasOwnProperty(field)) {
+  //         newUsers[field] = users[field];
+  //       }
+  //       return newUsers;
+  //     }, {});
 
-    return newUsers;
-  }
+  //     return newUsers;
+  //   }
   static getUserInfo(id) {
     const users = this.#users; // {id: ["shin", "pream"] , password: ["123", "111"]}
     const idx = users.id.indexOf(id);
