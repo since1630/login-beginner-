@@ -4,8 +4,10 @@
 // 모듈
 const express = require("express");
 const bodyParser = require("body-parser");
-const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
 
+const app = express();
 // 라우팅 컨트롤러 가져오기
 const home = require("./src/routes/home");
 

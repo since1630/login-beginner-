@@ -3,18 +3,21 @@
 		"shin",
 		"pream",
 		"hihi",
-		"serendifity"
+		"serendifity",
+		"hahahahah"
 	],
 	"password": [
 		"123",
 		"111",
 		"111",
-		"1234"
+		"1234",
+		"12341234"
 	],
 	"name": [
 		"페이커",
 		"메시",
 		"하이",
-		"세렌디피티"
+		"세렌디피티",
+		null
 	]
 }
