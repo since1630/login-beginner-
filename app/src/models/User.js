@@ -13,7 +13,6 @@ class User {
     // getUserInfo의 값은 프로미스다. 프로미스 처리가 끝나기 전까지 외부로부터의 출력 혹은 반환을 할 수 없게 await 처리 or then처리 한다.
     try {
       const { id, password } = await UserStorage.getUserInfo(client.id);
-
       if (id) {
         if (id === client.id && password === client.password) {
           return { success: true };
@@ -22,7 +21,7 @@ class User {
       }
       return { success: false, msg: "존재하지 않는 아이디 입니다." };
     } catch (err) {
-      return { success: false, msg: err };
+      return { success: false, err };
     }
   }
 
@@ -32,7 +31,7 @@ class User {
       const response = await UserStorage.save(client);
       return response;
     } catch (err) {
-      return { success: false, msg: err };
+      return { success: false, err };
     }
   }
 }

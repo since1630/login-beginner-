@@ -40,7 +40,7 @@ const opts = {
 
 const logger = createLogger({
   transports: [
-    // 콘솔에 찍고 싶으면 new transports.Console하면 됨.
+    // 로그 파일 쓰기. 콘솔에 찍고 싶으면 new transports.Console하면 됨.
     opts.file,
   ],
 });
@@ -49,5 +49,10 @@ const logger = createLogger({
 if (process.env.NODE_ENV !== "production") {
   logger.add(opts.console);
 }
+
+// 메세지를 받으면 바로 logger.info로 메시지를 띄워주기.
+logger.stream = {
+  write: (message) => logger.info(message),
+};
 
 module.exports = logger;
