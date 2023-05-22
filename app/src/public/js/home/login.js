@@ -20,8 +20,6 @@ function login() {
     id: id.value,
     password: password.value,
   };
-  console.log(req);
-  console.log("로그인 버튼을 클릭 했습니다.");
 
   // fetch를 이용해 사용자가 입력한 정보를 서버로 전달한다.
   fetch("/login", {
@@ -37,11 +35,14 @@ function login() {
       if (res.success) {
         location.href = "/";
       } else {
-        if (res.err) return alert(res.err);
+        if (res.err) {
+          // location.href = "/";
+          return alert(res.err);
+        }
         alert(res.msg);
       }
     })
     .catch((err) => {
-      console.error(new Error("로그인 중 에러 발생"));
+      console.error("로그인 중 에러 발생");
     });
 }

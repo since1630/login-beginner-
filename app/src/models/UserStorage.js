@@ -11,7 +11,7 @@ class UserStorage {
 
   // 유저 정보 가져오기
   static getUserInfo(id) {
-    const query = "SELECT * FROM abc WHERE id = ?;";
+    const query = "SELECT * FROM users WHERE id = ?;";
     return new Promise((resolve, reject) => {
       db.query(query, [id], (err, data) => {
         if (err) reject(`${err}`);
@@ -29,7 +29,7 @@ class UserStorage {
 
   // 회원 가입 정보 저장하기
   static async save(userInfo) {
-    const query = "INSERT INTO abc(id,name,password) VALUES(?,?,?);";
+    const query = "INSERT INTO users(id,name,password) VALUES(?,?,?);";
     return new Promise((resolve, reject) => {
       db.query(
         query,
